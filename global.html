@@ -59,9 +59,14 @@ function performCommand(event)
 }
 
 function formatMilliSeconds (milli) {
-	var hours = ("0" + Math.floor(milli / 3600000)).slice(-2);
-	var mins = ("0" + Math.floor(milli / 60000)).slice(-2);
-	var secs = ("0" + Math.ceil(milli / 1000)).slice(-2);
+	var hourVal = Math.floor(milli / 3600000);
+	var hours = ("0" + hourVal).slice(-2);
+	
+	var minVal = Math.floor((milli % 3600000) / 60000);
+	var mins = ("0" + minVal).slice(-2);
+	
+	var secVal = Math.ceil(((milli % 3600000) % 60000) / 1000);
+	var secs = ("0" + secVal).slice(-2);
 	
 	return hours + ":" + mins + ":" + secs;
 }
@@ -73,7 +78,7 @@ var changeToolbarIcon = function(newIconName) {
 
 function validateCommand(event)
 {	
-    var urlString = event.target.browserWindow.activeTab.url;
+	var urlString = event.target.browserWindow.activeTab.url;
 	
 	var enabled = localStorage.getItem("enabled");
 	
