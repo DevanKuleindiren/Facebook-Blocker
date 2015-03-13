@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blocker</title>
+	<script type='text/javascript' charset='utf-8'>
+
+
+
+function performCommand(event)
+{	
+ 	if (event.command === 'blockFB') {
+ 		var enabled = localStorage.getItem("enabled");
+ 		if (enabled === "true") {
+ 			
+ 			var d = new Date();
+ 			var time = d.getTime();
+ 			var uBTime = localStorage.getItem("uBTime");
+ 			if (time >= uBTime) {
+ 				changeToolbarIcon("fbUnblocked.png");
+ 				alert("Facebook unblocked.");
+ 				localStorage.setItem("enabled", "false");
+ 			} else {
+ 				var timeLeft = formatMilliSeconds (uBTime - time);
+ 				alert(timeLeft + " until you can unblock Facebook.");
+ 			}
+ 			
+ 		} else {
+ 		
+ 			var invalid = true;
+ 			
+ 			while (invalid) {
+ 			
+ 				var response = prompt("How many minutes do you want to block Facebook for?", "60");
+ 				if (response) {
+ 				
+ 					if (isNaN(response)) {
+ 						alert("You need to enter a number.");
+ 					} else {
+ 						if (response > 0) {
+ 							// UPDATE ICON
+ 							changeToolbarIcon("fbBlocked.png");
+ 				
+ 							// SAVE UNBLOCK DATE
+ 							var d = new Date();
+ 							var time = d.getTime();
+ 							var newTime = time + Math.ceil(parseFloat(response) * 60000);
+ 							localStorage.setItem("uBTime", newTime);
+ 							localStorage.setItem("enabled", "true");
+ 						}
+ 						
+ 						invalid = false;
+ 					}
+ 				} else {
+ 					invalid = false;
+ 				}
+ 			}
+ 		}
+ 	}
+}
+
+function formatMilliSeconds (milli) {
+	var hours = ("0" + Math.floor(milli / 3600000)).slice(-2);
+	var mins = ("0" + Math.floor(milli / 60000)).slice(-2);
+	var secs = ("0" + Math.ceil(milli / 1000)).slice(-2);
+	
+	return hours + ":" + mins + ":" + secs;
+}
+
+var changeToolbarIcon = function(newIconName) {
+  	var iconUri = safari.extension.baseURI + newIconName;
+	safari.extension.toolbarItems[0].image = iconUri;
+};
+
+function validateCommand(event)
+{	
+    var urlString = event.target.browserWindow.activeTab.url;
+	
+	var enabled = localStorage.getItem("enabled");
+	
+	if (enabled === "true") {
+		changeToolbarIcon("fbBlocked.png");
+		
+		if (urlString.indexOf('facebook.') > -1) {
+    	
+    		var warning = confirm('Facebook is blocked.');
+			var urlString = 'https://www.google.com/';
+   			event.target.browserWindow.activeTab.url = urlString;
+   		}
+   	} else {
+		changeToolbarIcon("fbUnblocked.png");
+	}
+}
+
+// if event handlers are in the global HTML page,
+// register with application:
+safari.application.addEventListener('command', performCommand, true);
+safari.application.addEventListener('validate', validateCommand, true);
+</script>
+</head>
+<body>
+</body>
+</html>
