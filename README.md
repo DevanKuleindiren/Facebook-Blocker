@@ -15,7 +15,5 @@ You can view how long you have left until you can unblock Facebook.
 ![Screenshot 3](http://www.devankuleindiren.com/Images/FBBlocker3.png "Screenshot 3")
 
 ##Installation (for Safari users)
-1. Click on the 'Facebook Blocker.safariextz' file.
-2. Click 'View Raw', and this should result in Safari downloading the file.
-3. Once downloaded, locate the file in Downloads and double click on it.
-4. When prompted, click 'Install'.
+1. Follow [this](https://extensions.apple.com/details/?id=com.devankuleindiren.blockerforfacebook-ZRQ35C78DB) link
+2. Click "Install Now"

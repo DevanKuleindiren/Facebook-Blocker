@@ -5,11 +5,11 @@
 	<key>Author</key>
 	<string>Devan Kuleindiren</string>
 	<key>Builder Version</key>
-	<string>9537.78.2</string>
+	<string>9537.85.13.7</string>
 	<key>CFBundleDisplayName</key>
-	<string>Facebook Blocker</string>
+	<string>Blocker for Facebook</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.devankuleindiren.facebookblocker</string>
+	<string>com.devankuleindiren.blockerforfacebook</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
@@ -32,9 +32,9 @@
 				<key>Label</key>
 				<string>FB Blocker</string>
 				<key>Palette Label</key>
-				<string>Facebook Blocker</string>
+				<string>Blocker for Facebook</string>
 				<key>Tool Tip</key>
-				<string>Block Facebook</string>
+				<string>Blocker for Facebook</string>
 			</dict>
 		</array>
 	</dict>
@@ -45,6 +45,8 @@
 	</dict>
 	<key>Description</key>
 	<string>Cut down your Facebook hours with Facebook Blocker.</string>
+	<key>DeveloperIdentifier</key>
+	<string>ZRQ35C78DB</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
@@ -57,5 +59,9 @@
 			<string>All</string>
 		</dict>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://www.devankuleindiren.com/FacebookBlocker/Info.plist</string>
+	<key>Website</key>
+	<string>http://www.devankuleindiren.com</string>
 </dict>
 </plist>
